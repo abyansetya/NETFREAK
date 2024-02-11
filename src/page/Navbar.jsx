@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { IoSearchOutline } from "react-icons/io5";
+
 import { motion } from "framer-motion";
+import InputSearch from "../components/navbar/InputSearch";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(0);
@@ -31,7 +32,7 @@ export default function Navbar() {
         <div className="navlist">
           <ul className="flex ml-[100px] gap-[20px] ">
             <li className="hover:text-[#E50914]">
-              <Link>Home</Link>
+              <Link to="/">Home</Link>
             </li>
             <li className="hover:text-[#E50914]">
               <Link>Movies</Link>
@@ -44,12 +45,7 @@ export default function Navbar() {
             </li>
           </ul>
         </div>
-        <input
-          type="text"
-          className="border-black ml-[80px] rounded text-[12px] w-[250px] px-3 text-black"
-          placeholder="Find Movie "
-        />
-        <IoSearchOutline className="ml-2 mt-[6px] -translate-x-8 text-black" />
+        <InputSearch />
         <div>
           <button className="border-2 rounded border-white w-[95px] h-[28px] right-[150px] absolute bg-primary border-none text-[15px]">
             Log in

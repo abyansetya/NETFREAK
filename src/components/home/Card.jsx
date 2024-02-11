@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { RightArrow, LeftArrow } from "../home/Arrow";
 import { PiArrowLeftLight } from "react-icons/pi";
 import { PiArrowRight } from "react-icons/pi";
 
@@ -30,7 +29,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-export default function Card({ movie, img }) {
+export default function Card({ movie, img, poster }) {
   const settings = {
     dots: false,
     infinite: false,
@@ -43,17 +42,21 @@ export default function Card({ movie, img }) {
   return (
     <>
       <Slider {...settings}>
-        {movie.map((movie, i) => {
-          return (
-            <div key={i} className="Movie-wrapper">
-              <img
-                src={`${img}/${movie.poster_path}`}
-                alt={movie.title}
-                className="Movie-image w-[150px] rounded-xl "
-              />
-            </div>
-          );
-        })}
+        {movie.map((movieItem, i) => (
+          <div key={i} className="Movie-wrapper">
+            {["poster", "logo", "profile"].map(
+              (posterType) =>
+                movieItem[posterType + "_path"] && (
+                  <img
+                    key={i}
+                    src={`${img}/${movieItem[posterType + "_path"]}`}
+                    alt={movieItem.title}
+                    className="Movie-image w-[150px] rounded-xl"
+                  />
+                )
+            )}
+          </div>
+        ))}
       </Slider>
     </>
   );

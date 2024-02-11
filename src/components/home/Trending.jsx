@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
-import NowPlayCard from "./NowPlayCard";
 import {
   GetMovieList,
   GetNowPlay,
@@ -11,10 +10,6 @@ import {
   GetTVPopular,
 } from "../../data/api";
 import BannerCard from "./BannerCard";
-import OnAir from "./OnAir";
-import Person from "./Person";
-import Upcoming from "./Upcoming";
-import TV from "./TV";
 
 export default function Trending() {
   const [movies, setMovies] = useState([]);
@@ -59,7 +54,7 @@ export default function Trending() {
           <h1 className="font-bold text-[20px]">Trending Movies</h1>
           <div className="h-[2px] bg-white w-[170px] mt-1" />
           <div className="Movie-container pt-6 ">
-            <Card movie={movies} img={img} />
+            <Card movie={movies} img={img} poster="poster" />
           </div>
         </div>
       </div>
@@ -68,7 +63,7 @@ export default function Trending() {
           <h1 className="font-bold text-[20px]">Now Playing</h1>
           <div className="h-[2px] bg-white w-[125px] mt-1" />
           <div className="Movie-container pt-6 ">
-            <NowPlayCard movie={nowPlay} img={img} />
+            <Card movie={nowPlay} img={img} poster="poster" />
           </div>
         </div>
       </div>
@@ -77,7 +72,7 @@ export default function Trending() {
           <h1 className="font-bold text-[20px]">TOP TV Show</h1>
           <div className="h-[2px] bg-white w-[133px] mt-1" />
           <div className="Movie-container pt-6 ">
-            <BannerCard movie={banner} img={img} />
+            <BannerCard movie={banner} img={img} poster="backdrop" />
           </div>
         </div>
       </div>
@@ -86,7 +81,7 @@ export default function Trending() {
           <h1 className="font-bold text-[20px]">On Air Show</h1>
           <div className="h-[2px] bg-white w-[125px] mt-1" />
           <div className="Movie-container pt-6 ">
-            <OnAir movie={onAir} img={img} />
+            <Card movie={onAir} img={img} poster="poster" />
           </div>
         </div>
       </div>
@@ -95,7 +90,7 @@ export default function Trending() {
           <h1 className="font-bold text-[20px]">Actress/Actors</h1>
           <div className="h-[2px] bg-white w-[155px] mt-1" />
           <div className="Movie-container pt-6 ">
-            <Person movie={person} img={img} />
+            <Card movie={person} img={img} poster="profile" />
           </div>
         </div>
       </div>
@@ -104,7 +99,7 @@ export default function Trending() {
           <h1 className="font-bold text-[20px]">Upcoming Movie</h1>
           <div className="h-[2px] bg-white w-[173px] mt-1" />
           <div className="Movie-container pt-6 ">
-            <Upcoming movie={upcoming} img={img} />
+            <Card movie={upcoming} img={img} poster="poster" />
           </div>
         </div>
       </div>
@@ -113,7 +108,7 @@ export default function Trending() {
           <h1 className="font-bold text-[20px]">Popular TV</h1>
           <div className="h-[2px] bg-white w-[115px] mt-1" />
           <div className="Movie-container pt-6 ">
-            <TV movie={tvpopular} img={img} />
+            <Card movie={tvpopular} img={img} poster="logo" />
           </div>
         </div>
       </div>

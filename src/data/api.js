@@ -52,3 +52,10 @@ export async function GetTVPopular() {
   );
   return TVList.data.results;
 }
+
+export async function searchMovie(q) {
+  const search = await axios.get(
+    `${baseurl}/search/movie?query=${q}&api_key=${apikey}`
+  );
+  return search.data;
+}
