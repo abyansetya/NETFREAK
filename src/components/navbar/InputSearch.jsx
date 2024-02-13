@@ -4,6 +4,7 @@ import { IoSearchOutline } from "react-icons/io5";
 import { useDebounce } from "use-debounce";
 import { Link, useNavigate } from "react-router-dom";
 import { RxCross2 } from "react-icons/rx";
+import NotFound from "../../page/NotFound";
 
 const baseurl = import.meta.env.VITE_BASEURL;
 const apikey = import.meta.env.VITE_APIKEY;
@@ -13,7 +14,6 @@ export default function InputSearch() {
   const [results, setResults] = useState([]);
   const [cross, setCross] = useState(false);
 
-  const searchRef = useRef();
   const navigate = useNavigate();
 
   function removeSearch(e) {
@@ -37,6 +37,7 @@ export default function InputSearch() {
       );
       setResults(response.data.results);
     } catch (error) {
+      <NotFound />;
       console.error("Error fetching search results:", error);
       setResults([]);
     }

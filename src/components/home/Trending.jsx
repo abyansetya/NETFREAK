@@ -10,33 +10,42 @@ import {
 import BannerCard from "./BannerCard";
 import { Link } from "react-router-dom";
 
+
 export default function Trending() {
   const [movies, setMovies] = useState([]);
   const [nowPlay, setNowPlay] = useState([]);
   const [banner, setBanner] = useState([]);
   const [onAir, setOnAir] = useState([]);
-
+  const [loading, setLoading] = useState(false);
   const [upcoming, setUpcoming] = useState([]);
 
   const img = import.meta.env.VITE_BASEIMGURL;
 
   useEffect(() => {
-    GetMovieList().then((result) => {
-      setMovies(result);
-    });
-    GetNowPlay().then((result) => {
-      setNowPlay(result);
-    });
-    MovieBanner().then((result) => {
-      setBanner(result);
-    });
-    GetOnAir().then((result) => {
-      setOnAir(result);
-    });
+    setLoading(true);
+    try {
+      GetMovieList().then((result) => {
+        setMovies(result);
+      });
+      GetNowPlay().then((result) => {
+        setNowPlay(result);
+      });
+      MovieBanner().then((result) => {
+        setBanner(result);
+      });
+      GetOnAir().then((result) => {
+        setOnAir(result);
+      });
 
-    GetUpcomingMovie().then((result) => {
-      setUpcoming(result);
-    });
+      GetUpcomingMovie().then((result) => {
+        setUpcoming(result);
+      });
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
   return (
@@ -54,7 +63,7 @@ export default function Trending() {
             </Link>
           </div>
           <div className="Movie-container pt-6 ">
-            <Card movie={movies} img={img} poster="poster" />
+            <Card movie={movies} img={img} poster="poster" name="movie" />
           </div>
         </div>
       </div>
@@ -70,7 +79,7 @@ export default function Trending() {
             </Link>
           </div>
           <div className="Movie-container pt-6 ">
-            <Card movie={nowPlay} img={img} poster="poster" />
+            <Card movie={nowPlay} img={img} poster="poster" name="movie" />
           </div>
         </div>
       </div>
@@ -86,7 +95,7 @@ export default function Trending() {
             </Link>
           </div>
           <div className="Movie-container pt-6 ">
-            <BannerCard movie={banner} img={img} poster="backdrop" />
+            <BannerCard movie={banner} img={img} poster="backdrop" name="tv" />
           </div>
         </div>
       </div>
@@ -102,7 +111,7 @@ export default function Trending() {
             </Link>
           </div>
           <div className="Movie-container pt-6 ">
-            <Card movie={onAir} img={img} poster="poster" />
+            <Card movie={onAir} img={img} poster="poster" name="tv" />
           </div>
         </div>
       </div>
@@ -118,7 +127,7 @@ export default function Trending() {
             </Link>
           </div>
           <div className="Movie-container pt-6 ">
-            <Card movie={upcoming} img={img} poster="poster" />
+            <Card movie={upcoming} img={img} poster="poster" name="movie" />
           </div>
         </div>
       </div>

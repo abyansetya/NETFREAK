@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Search from "./components/search/[keyword]/Search";
 import NotFound from "./page/NotFound";
 import AllMovies from "./page/AllMovies";
+import MovieDetail from "./components/movieDetail/[id]/MovieDetail";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
           <Route exact path="/search/:keyword" element={<Search />} />
           <Route path="*" element={<NotFound />} />
           <Route exact path="/allmovies/:api" element={<AllMovies />} />
+          <Route exact path="/:name/:id" element={<MovieDetail />} />
         </Routes>
       </Router>
     </>

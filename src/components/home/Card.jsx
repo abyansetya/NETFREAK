@@ -4,6 +4,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { PiArrowLeftLight } from "react-icons/pi";
 import { PiArrowRight } from "react-icons/pi";
+import { useNavigate } from "react-router-dom";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 function SampleNextArrow(props) {
   const { onClick } = props;
@@ -29,7 +32,17 @@ function SamplePrevArrow(props) {
   );
 }
 
-export default function Card({ movie, img, poster }) {
+export default function Card({ movie, img, poster, name }) {
+  const navigate = useNavigate(); // Move useNavigate outside of moviedetail
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (movie.length > 0) {
+      setLoading(false);
+    }
+  }, [movie]);
+
   const settings = {
     dots: false,
     infinite: false,
@@ -39,27 +52,46 @@ export default function Card({ movie, img, poster }) {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
+
+  function moviedetail(movieId) {
+    navigate(`/${name}/${movieId}`); // Use template literals for string interpolation
+  }
+
   return (
     <>
-      <Slider {...settings}>
-        {movie.map((movieItem, i) => (
-          <div key={i} className="Movie-wrapper">
-            {["poster", "logo", "profile"].map(
-              (posterType) =>
-                movieItem[posterType + "_path"] && (
-                  <div>
-                    <img
-                      key={i}
-                      src={`${img}/${movieItem[posterType + "_path"]}`}
-                      alt={movieItem.title}
-                      className="Movie-image w-[150px] rounded-xl"
-                    />
-                  </div>
-                )
-            )}
-          </div>
-        ))}
-      </Slider>
+      <SkeletonTheme baseColor="#313131" highlightColor="#525252">
+        <Slider {...settings}>
+          {loading
+            ? Array.from({ length: 7 }).map((_, index) => (
+                <Skeleton
+                  key={index}
+                  height={225}
+                  width={150}
+                  style={{ marginRight: "10px" }}
+                  className="rounded-xl"
+                />
+              ))
+            : movie.map((movieItem, i) => (
+                <div
+                  key={i}
+                  className="Movie-wrapper"
+                  onClick={() => moviedetail(movieItem.id)}
+                >
+                  {["poster", "logo", "profile"].map(
+                    (posterType, j) =>
+                      movieItem[posterType + "_path"] && (
+                        <img
+                          key={j}
+                          src={`${img}/${movieItem[posterType + "_path"]}`}
+                          alt={movieItem.title}
+                          className="Movie-image w-[150px] rounded-xl"
+                        />
+                      )
+                  )}
+                </div>
+              ))}
+        </Slider>
+      </SkeletonTheme>
     </>
   );
 }
