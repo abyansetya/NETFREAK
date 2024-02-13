@@ -5,6 +5,7 @@ import Btn from "./page/ToTopbtn";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Search from "./components/search/[keyword]/Search";
 import NotFound from "./page/NotFound";
+import AllMovies from "./page/AllMovies";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/search/:keyword" element={<Search />} />
           <Route path="*" element={<NotFound />} />
+          <Route exact path="/allmovies/:api" element={<AllMovies />} />
         </Routes>
       </Router>
     </>

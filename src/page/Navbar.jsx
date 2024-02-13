@@ -26,9 +26,11 @@ export default function Navbar() {
       }   fixed text-white font-poppins py-4 px-10 w-full h-[60px] transition duration-300 z-[1000]`}
     >
       <div className="flex">
-        <h1 className="font-racing text-[20px]">
-          <span className="text-[#E50914]">NET</span>FREAK
-        </h1>
+        <Link to="/">
+          <h1 className="font-racing text-[20px]">
+            <span className="text-[#E50914]">NET</span>FREAK
+          </h1>
+        </Link>
         <div className="navlist">
           <ul className="flex ml-[100px] gap-[20px] ">
             <li className="hover:text-[#E50914]">

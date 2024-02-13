@@ -47,12 +47,14 @@ export default function Card({ movie, img, poster }) {
             {["poster", "logo", "profile"].map(
               (posterType) =>
                 movieItem[posterType + "_path"] && (
-                  <img
-                    key={i}
-                    src={`${img}/${movieItem[posterType + "_path"]}`}
-                    alt={movieItem.title}
-                    className="Movie-image w-[150px] rounded-xl"
-                  />
+                  <div>
+                    <img
+                      key={i}
+                      src={`${img}/${movieItem[posterType + "_path"]}`}
+                      alt={movieItem.title}
+                      className="Movie-image w-[150px] rounded-xl"
+                    />
+                  </div>
                 )
             )}
           </div>
