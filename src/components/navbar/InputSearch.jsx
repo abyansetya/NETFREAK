@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { IoSearchOutline } from "react-icons/io5";
 import { useDebounce } from "use-debounce";
@@ -45,7 +45,6 @@ export default function InputSearch() {
 
   async function submitMovies(e) {
     e.preventDefault();
-    console.log("tes");
 
     const keyword = query;
     if (keyword.length > 0) {
@@ -58,8 +57,10 @@ export default function InputSearch() {
     searchMovies();
   }, [debouncedQuery]);
 
+  const name = "movie";
+
   return (
-    <div className="">
+    <div className="text-black">
       <form onSubmit={submitMovies} className="">
         <div
           onClick={() => setCross(true)}
@@ -88,14 +89,25 @@ export default function InputSearch() {
       <div className="flex ml-[80px] absolute   ">
         {query.length > 0 && (
           <div className="h-[400px] w-[250px] rounded bg-white mt-2 overflow-y-auto">
-            {results.map((result) => (
-              <Link key={result.id} className="flex items-center justify-start">
-                <IoSearchOutline className="text-black ml-1 w-[20px] " />
-                <p className="text-black mx-2 m-2 text-[15px]  ">
-                  {result.title}
-                </p>
-              </Link>
-            ))}
+            {results.length > 0 ? (
+              results.map((result) => (
+                <Link to={`${name}/${result.id}`} onClick={() => setQuery("")}>
+                  <div
+                    key={result.id}
+                    className="flex items-center justify-start"
+                  >
+                    <IoSearchOutline className="text-black ml-1 w-[20px] " />
+                    <p className="text-black mx-2 m-2 text-[15px]  ">
+                      {result.title}
+                    </p>
+                  </div>
+                </Link>
+              ))
+            ) : (
+              <div className="w-full flex items-center justify-center h-full">
+                <p>not found</p>
+              </div>
+            )}
           </div>
         )}
       </div>

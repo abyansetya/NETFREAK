@@ -2,7 +2,7 @@ import React from "react";
 
 export default function SearchCard({ movie, img }) {
   return (
-    <div className="flex flex-wrap  w-full items-center justify-center gap-[50px]">
+    <div className="flex flex-wrap  w-full items-center  gap-[30px]">
       {movie.map((movies, i) => (
         <div key={i}>
           {movies.poster_path && (

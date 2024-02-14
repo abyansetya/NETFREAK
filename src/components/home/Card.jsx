@@ -33,15 +33,18 @@ function SamplePrevArrow(props) {
 }
 
 export default function Card({ movie, img, poster, name }) {
-  const navigate = useNavigate(); // Move useNavigate outside of moviedetail
+  const navigate = useNavigate();
 
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (movie.length > 0) {
-      setLoading(false);
-    }
+    setLoading(true); // Set loading to true when new movie data is received
+    handleImageLoad();
   }, [movie]);
+
+  const handleImageLoad = () => {
+    setLoading(false); // Set loading to false when any image is loaded
+  };
 
   const settings = {
     dots: false,
@@ -54,44 +57,46 @@ export default function Card({ movie, img, poster, name }) {
   };
 
   function moviedetail(movieId) {
-    navigate(`/${name}/${movieId}`); // Use template literals for string interpolation
+    navigate(`/${name}/${movieId}`);
   }
 
   return (
     <>
       <SkeletonTheme baseColor="#313131" highlightColor="#525252">
         <Slider {...settings}>
-          {loading
-            ? Array.from({ length: 7 }).map((_, index) => (
-                <Skeleton
-                  key={index}
-                  height={225}
-                  width={150}
-                  style={{ marginRight: "10px" }}
-                  className="rounded-xl"
-                />
-              ))
-            : movie.map((movieItem, i) => (
-                <div
-                  key={i}
-                  className="Movie-wrapper"
-                  onClick={() => moviedetail(movieItem.id)}
-                >
-                  {["poster", "logo", "profile"].map(
-                    (posterType, j) =>
-                      movieItem[posterType + "_path"] && (
-                        <img
-                          key={j}
-                          src={`${img}/${movieItem[posterType + "_path"]}`}
-                          alt={movieItem.title}
-                          className="Movie-image w-[150px] rounded-xl"
+          {movie.map((movieItem, i) => (
+            <button
+              key={i}
+              className="Movie-wrapper"
+              onClick={() => moviedetail(movieItem.id)}
+            >
+              {["poster", "logo", "profile"].map(
+                (posterType, j) =>
+                  movieItem[posterType + "_path"] && (
+                    <React.Fragment key={j}>
+                      <img
+                        src={`${img}/${movieItem[posterType + "_path"]}`}
+                        alt={movieItem.title}
+                        className="Movie-image w-[150px] rounded-xl"
+                        onLoad={handleImageLoad} // Update loading state when any image is loaded
+                        style={{ display: loading ? "none" : "block" }}
+                      />
+                      {loading && ( // Show skeleton when loading
+                        <Skeleton
+                          height={225}
+                          width={150}
+                          style={{ marginRight: "10px" }}
+                          className="rounded-xl"
                         />
-                      )
-                  )}
-                </div>
-              ))}
+                      )}
+                    </React.Fragment>
+                  )
+              )}
+            </button>
+          ))}
         </Slider>
       </SkeletonTheme>
     </>
   );
 }
+

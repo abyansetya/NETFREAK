@@ -55,11 +55,13 @@ export default function Trending() {
         <div className="title ">
           <div className="head flex w-full justify-between  items-center">
             <div className="flex flex-col">
-              <h1 className="font-bold text-[20px]">Trending Movies</h1>
+              <h1 className="font-bold text-[20px] ">Trending Movies</h1>
               <div className="h-[2px] bg-white w-[170px] mt-1" />
             </div>
             <Link to="/allmovies/Trending">
-              <p className="pr-6 underline">See All Movies</p>
+              <p className="pr-6 underline hover:text-[#E50914]">
+                See All Movies
+              </p>
             </Link>
           </div>
           <div className="Movie-container pt-6 ">
@@ -75,7 +77,9 @@ export default function Trending() {
               <div className="h-[2px] bg-white w-[130px] mt-1" />
             </div>
             <Link to="/allmovies/nowplay">
-              <p className="pr-6 underline">See All Movies</p>
+              <p className="pr-6 underline hover:text-[#E50914]">
+                See All Movies
+              </p>
             </Link>
           </div>
           <div className="Movie-container pt-6 ">
@@ -91,7 +95,9 @@ export default function Trending() {
               <div className="h-[2px] bg-white w-[130px] mt-1" />
             </div>
             <Link to="/allmovies/banner">
-              <p className="pr-6 underline">See All Shows</p>
+              <p className="pr-6 underline hover:text-[#E50914]">
+                See All Shows
+              </p>
             </Link>
           </div>
           <div className="Movie-container pt-6 ">
@@ -107,7 +113,9 @@ export default function Trending() {
               <div className="h-[2px] bg-white w-[150px] mt-1" />
             </div>
             <Link to="/allmovies/onAir">
-              <p className="pr-6 underline">See All Shows</p>
+              <p className="pr-6 underline hover:text-[#E50914]">
+                See All Shows
+              </p>
             </Link>
           </div>
           <div className="Movie-container pt-6 ">
@@ -123,7 +131,9 @@ export default function Trending() {
               <div className="h-[2px] bg-white w-[185px] mt-1" />
             </div>
             <Link to="/allmovies/upcoming">
-              <p className="pr-6 underline">See All Movies</p>
+              <p className="pr-6 underline hover:text-[#E50914]">
+                See All Movies
+              </p>
             </Link>
           </div>
           <div className="Movie-container pt-6 ">
