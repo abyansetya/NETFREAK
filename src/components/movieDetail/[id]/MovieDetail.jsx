@@ -71,12 +71,16 @@ export default function MovieDetail() {
           <span className="text-[#E50914] ">●</span>
           <p className="underline">{movie.status}</p>
           <span className="text-[#E50914] ">●</span>
-          {movie.release_date && <p> {movie.release_date}</p>}
+          {movie.release_date ? (
+            <p>{movie.release_date}</p>
+          ) : movie.first_air_date ? (
+            <p>{movie.first_air_date}</p>
+          ) : null}
         </div>
         <div>
           <p className=" mt-[20px] font-bold text-[#949494] ">Rating:</p>
           <div className="flex items-center gap-[5px]">
-            <CiStar className="text-[20px]" />
+            <CiStar className="text-[20px] text-[#E50914]" />
             {movie.vote_average && movie.vote_average.toFixed(2)} / 10
           </div>
         </div>

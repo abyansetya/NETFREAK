@@ -17,9 +17,10 @@ export default function AllMovies() {
   const [loading, setLoading] = useState(true); // Add loading state
   const navigate = useNavigate();
   const [name, setName] = useState("");
+  const [imageLoading, setImageLoading] = useState({}); // Separate loading state for each image
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true); // Reset loading state to true when page changes
     const fetchData = async (api, page) => {
       try {
         let response;
@@ -62,13 +63,13 @@ export default function AllMovies() {
         setName(name);
         setMovies(response.data.results);
         setTotalPages(response.data.total_pages); // Set total pages
-        // Turn off loading state when data is fetched
       } catch (error) {
         console.error("Error fetching data:", error);
         setLoading(false); // Turn off loading state if there's an error
+      } finally {
+        setLoading(false);
       }
     };
-    // Fetch data based on the API specified in the URL parameter and current page
     fetchData(api, page);
   }, [api, page]);
 
@@ -76,8 +77,11 @@ export default function AllMovies() {
     navigate(`/${name}/${movieId}`);
   }
 
-  const handleImageLoad = () => {
-    setLoading(false); // Set loading to false when any image is loaded
+  const handleImageLoad = (index) => {
+    setImageLoading((prevState) => ({
+      ...prevState,
+      [index]: true,
+    }));
   };
 
   return (
@@ -87,27 +91,37 @@ export default function AllMovies() {
           <h1 className="m-4 text-[20px] font-bold">ALL Movies</h1>
           <div className="flex flex-wrap gap-[20px] justify-center">
             {movies.map((movie, i) => (
-              <div key={i} className="" onClick={() => moviedetail(movie.id)}>
+              <div
+                key={i}
+                className="hover: cursor-pointer"
+                onClick={() => moviedetail(movie.id)}
+              >
                 <img
                   src={`${img}/${movie.poster_path}`}
                   alt=""
-                  className="w-[200px] rounded"
-                  onLoad={handleImageLoad}
+                  className={`w-[200px] rounded ${loading ? "hidden" : null}`}
+                  onLoad={() => handleImageLoad(i)}
                 />
-                {loading && ( // Show skeleton when loading
+                {loading || !imageLoading[i] ? ( // Show skeleton when loading or image is not loaded
                   <Skeleton
                     height={300}
                     width={200}
                     style={{ marginRight: "10px" }}
                     className="rounded-xl"
                   />
-                )}
+                ) : null}
               </div>
             ))}
           </div>
         </div>
-        <Pagination page={page} setPage={setPage} totalPages={totalPages} />
+        <Pagination
+          page={page}
+          setPage={setPage}
+          totalPages={totalPages}
+          setLoading={setLoading}
+        />
       </SkeletonTheme>
     </>
   );
 }
+

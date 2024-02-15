@@ -74,7 +74,7 @@ export default function BannerCard({ movie, img }) {
             : movie.map((movieItem, i) => (
                 <div
                   key={i}
-                  className="Movie-wrapper"
+                  className="Movie-wrapper hover:cursor-pointer"
                   onClick={() => moviedetail(movieItem.id)}
                 >
                   {movieItem.backdrop_path && (

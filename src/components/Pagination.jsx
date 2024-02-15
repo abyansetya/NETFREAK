@@ -1,15 +1,17 @@
 import React from "react";
 
-export default function Pagination({ page, setPage, totalPages }) {
+export default function Pagination({ page, setPage, totalPages, setLoading }) {
   function prevToggle() {
     if (page > 1) {
       setPage((prev) => prev - 1);
+      setLoading(true);
     }
   }
 
   function nextToggle() {
     if (page < 100) {
       setPage((prev) => prev + 1);
+      setLoading(true);
     }
   }
 

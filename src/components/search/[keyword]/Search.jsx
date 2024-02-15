@@ -10,6 +10,7 @@ export default function Search() {
   const { keyword } = useParams();
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(true);
+  
 
   useEffect(() => {
     async function fetchSearchResults() {
