@@ -66,8 +66,6 @@ export default function AllMovies() {
       } catch (error) {
         console.error("Error fetching data:", error);
         setLoading(false); // Turn off loading state if there's an error
-      } finally {
-        setLoading(false);
       }
     };
     fetchData(api, page);
@@ -78,6 +76,7 @@ export default function AllMovies() {
   }
 
   const handleImageLoad = (index) => {
+    setLoading(false);
     setImageLoading((prevState) => ({
       ...prevState,
       [index]: true,

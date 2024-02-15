@@ -31,6 +31,9 @@ export default function Search() {
     fetchSearchResults();
   }, [keyword]);
 
+
+
+
   return (
     <div className="text-white p-16">
       <div className="innercontainy">

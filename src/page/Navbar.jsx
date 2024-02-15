@@ -43,7 +43,7 @@ export default function Navbar() {
               <Link>TV Show</Link>
             </li>
             <li className="hover:text-[#E50914]">
-              <Link>Trending</Link>
+              <Link to="/allmovies/Trending">Trending</Link>
             </li>
           </ul>
         </div>
