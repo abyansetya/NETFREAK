@@ -7,6 +7,8 @@ import Search from "./components/search/[keyword]/Search";
 import NotFound from "./page/NotFound";
 import AllMovies from "./page/AllMovies";
 import MovieDetail from "./components/movieDetail/[id]/MovieDetail";
+import Movies from "./page/Movies";
+import TV from "./page/TV";
 
 export default function App() {
   return (
@@ -21,6 +23,8 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
           <Route exact path="/allmovies/:api" element={<AllMovies />} />
           <Route exact path="/:name/:id" element={<MovieDetail />} />
+          <Route exact path="/movies" element={<Movies />} />
+          <Route exact path="/tv" element={<TV />} />
         </Routes>
       </Router>
     </>

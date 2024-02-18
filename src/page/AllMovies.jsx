@@ -101,7 +101,7 @@ export default function AllMovies() {
                   className={`w-[200px] rounded ${loading ? "hidden" : null}`}
                   onLoad={() => handleImageLoad(i)}
                 />
-                {loading || !imageLoading[i] ? ( // Show skeleton when loading or image is not loaded
+                {loading ? ( // Show skeleton when loading or image is not loaded
                   <Skeleton
                     height={300}
                     width={200}

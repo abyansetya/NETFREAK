@@ -9,7 +9,7 @@ export default function Pagination({ page, setPage, totalPages, setLoading }) {
   }
 
   function nextToggle() {
-    if (page < 100) {
+    if (page < totalPages) {
       setPage((prev) => prev + 1);
       setLoading(true);
     }

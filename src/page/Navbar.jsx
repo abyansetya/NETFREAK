@@ -37,10 +37,10 @@ export default function Navbar() {
               <Link to="/">Home</Link>
             </li>
             <li className="hover:text-[#E50914]">
-              <Link>Movies</Link>
+              <Link to="/movies">Movies</Link>
             </li>
             <li className="hover:text-[#E50914]">
-              <Link>TV Show</Link>
+              <Link to="/tv">TV Show</Link>
             </li>
             <li className="hover:text-[#E50914]">
               <Link to="/allmovies/Trending">Trending</Link>
