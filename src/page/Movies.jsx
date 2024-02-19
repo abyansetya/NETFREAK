@@ -88,7 +88,9 @@ const Movies = () => {
               setPage(1);
             }}
             className={` transition duration-300 border-2 border-none py-[10px] px-[25px] active:bg-primary flex items-center justify-center text-[14px] ${
-              name === "Trending" ? "bg-primary" : "bg-[#191919]"
+              name === "Trending"
+                ? "bg-primary"
+                : "bg-[#191919] hover:bg-[#5a5959]"
             }`}
           >
             Trending
@@ -99,7 +101,9 @@ const Movies = () => {
               setPage(1);
             }}
             className={` transition duration-300 border-2 border-none py-[10px] px-[25px] flex items-center justify-center text-[14px] ${
-              name === "nowplaying" ? "bg-primary" : "bg-[#191919]"
+              name === "nowplaying"
+                ? "bg-primary"
+                : "bg-[#191919] hover:bg-[#5a5959]"
             }`}
           >
             Now Playing
@@ -109,8 +113,10 @@ const Movies = () => {
               setName("topliked");
               setPage(1);
             }}
-            className={` transition duration-300 border-2 border-none py-[10px] px-[25px] flex items-center justify-center text-[14px] ${
-              name === "topliked" ? "bg-primary" : "bg-[#191919]"
+            className={`  transition duration-300 border-2 border-none py-[10px] px-[25px] flex items-center justify-center text-[14px] ${
+              name === "topliked"
+                ? "bg-primary"
+                : "bg-[#191919] hover:bg-[#5a5959]"
             }`}
           >
             Top Liked
@@ -121,7 +127,9 @@ const Movies = () => {
               setPage(1);
             }}
             className={` transition duration-300 border-2 border-none py-[10px] px-[25px] flex items-center justify-center text-[14px] ${
-              name === "upcoming" ? "bg-primary" : "bg-[#191919]"
+              name === "upcoming"
+                ? "bg-primary"
+                : "bg-[#191919] hover:bg-[#5a5959]"
             }`}
           >
             Upcoming

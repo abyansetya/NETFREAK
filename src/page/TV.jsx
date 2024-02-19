@@ -82,8 +82,10 @@ const Movies = () => {
               setName("Trending");
               setPage(1);
             }}
-            className={` transition duration-300 border-2 border-none py-[10px] px-[25px] active:bg-primary flex items-center justify-center text-[14px] ${
-              name === "Trending" ? "bg-primary" : "bg-[#191919]"
+            className={`transition duration-300 border-2 border-none py-[10px] px-[25px] active:bg-primary flex items-center justify-center text-[14px] ${
+              name === "Trending"
+                ? "bg-primary"
+                : "bg-[#191919] hover:bg-[#5a5959]"
             }`}
           >
             Airing Today
@@ -94,7 +96,9 @@ const Movies = () => {
               setPage(1);
             }}
             className={` transition duration-300 border-2 border-none py-[10px] px-[25px] flex items-center justify-center text-[14px] ${
-              name === "nowplaying" ? "bg-primary" : "bg-[#191919]"
+              name === "nowplaying"
+                ? "bg-primary"
+                : "bg-[#191919] hover:bg-[#5a5959]"
             }`}
           >
             On The Air
@@ -105,7 +109,9 @@ const Movies = () => {
               setPage(1);
             }}
             className={` transition duration-300 border-2 border-none py-[10px] px-[25px] flex items-center justify-center text-[14px] ${
-              name === "topliked" ? "bg-primary" : "bg-[#191919]"
+              name === "topliked"
+                ? "bg-primary"
+                : "bg-[#191919] hover:bg-[#5a5959] "
             }`}
           >
             Popular
@@ -115,8 +121,10 @@ const Movies = () => {
               setName("upcoming");
               setPage(1);
             }}
-            className={` transition duration-300 border-2 border-none py-[10px] px-[25px] flex items-center justify-center text-[14px] ${
-              name === "upcoming" ? "bg-primary" : "bg-[#191919]"
+            className={`transition duration-300 border-2 border-none py-[10px] px-[25px] flex items-center justify-center text-[14px] ${
+              name === "upcoming"
+                ? "bg-primary"
+                : "bg-[#191919] hover:bg-[#5a5959]"
             }`}
           >
             Top Rated
