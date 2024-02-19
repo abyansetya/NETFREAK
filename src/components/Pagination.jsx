@@ -18,11 +18,15 @@ export default function Pagination({ page, setPage, totalPages, setLoading }) {
   return (
     <div className="text-white flex w-full justify-center pb-[50px]   ">
       <div className="flex gap-[10px]">
-        <button onClick={prevToggle}>prev</button>
+        <button onClick={prevToggle} className="hover:text-[#E50914]">
+          prev
+        </button>
         <p>{page}</p>
         <p>...</p>
         <p>{totalPages}</p>
-        <button onClick={nextToggle}>next</button>
+        <button onClick={nextToggle} className="hover:text-[#E50914]">
+          next
+        </button>
       </div>
     </div>
   );

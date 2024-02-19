@@ -132,13 +132,16 @@ export default function MovieDetail() {
                 Actor & Actress:
               </h1>
               <div className="flex ">
-                {actress &&
+                {actress != null ? (
                   actress.slice(0, 5).map((actress, i) => (
                     <React.Fragment key={i}>
                       <p>{actress.name}</p>
                       {i !== 4 && <span className="mr-2">, </span>}
                     </React.Fragment>
-                  ))}
+                  ))
+                ) : (
+                  <p>-</p>
+                )}
               </div>
             </div>
             <div className="mt-[20px] flex items-center gap-[30px]">

@@ -97,7 +97,7 @@ const Movies = () => {
               name === "nowplaying" ? "bg-primary" : "bg-[#191919]"
             }`}
           >
-            On The Pair
+            On The Air
           </button>
           <button
             onClick={() => {
