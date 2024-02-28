@@ -45,13 +45,13 @@ export default function Navbar() {
             <li className="hover:text-[#E50914]">
               <Link to="/allmovies/Trending">Trending</Link>
             </li>
+            <li className="border-2 rounded flex items-center justify-center border-white w-[100px] h-[28px] hover:bg-[#ec787e]  bg-primary border-none text-[15px]">
+              <Link to="/Bookmark">Bookmark</Link>
+            </li>
           </ul>
         </div>
         <InputSearch />
         <div>
-          <button className="border-2 rounded border-white w-[95px] h-[28px] right-[150px] absolute bg-primary border-none text-[15px]">
-            Log in
-          </button>
           <button className="border-2 rounded border-white w-[95px] right-10 absolute bg-white text-black text-[15px]">
             Sign in
           </button>

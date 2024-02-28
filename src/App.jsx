@@ -9,10 +9,12 @@ import AllMovies from "./page/AllMovies";
 import MovieDetail from "./components/movieDetail/[id]/MovieDetail";
 import Movies from "./page/Movies";
 import TV from "./page/TV";
+import Bookmark from "./page/Bookmark";
+import { GlobalProvider } from "./context/GlobalState";
 
 export default function App() {
   return (
-    <>
+    <GlobalProvider>
       <Router>
         <Navbar />
         <Btn />
@@ -25,8 +27,9 @@ export default function App() {
           <Route exact path="/:name/:id" element={<MovieDetail />} />
           <Route exact path="/movies" element={<Movies />} />
           <Route exact path="/tv" element={<TV />} />
+          <Route exact path="/Bookmark" element={<Bookmark />} />
         </Routes>
       </Router>
-    </>
+    </GlobalProvider>
   );
 }

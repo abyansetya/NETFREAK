@@ -1,10 +1,11 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CiPlay1, CiBookmark, CiStar } from "react-icons/ci";
 import YouTube from "react-youtube";
 import { GrClose } from "react-icons/gr";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import { GlobalContext } from "../../../context/GlobalState";
 
 export default function MovieDetail() {
   const { name, id } = useParams();
@@ -61,6 +62,14 @@ export default function MovieDetail() {
     }
     fetchData();
   }, []);
+
+  const { addMovieToBookmark, bookmark } = useContext(GlobalContext);
+
+  let bookmarked = bookmark.find(
+    (o) => o.id === (movie && !loading ? movie.id : null)
+  );
+
+  const bookmarkdisabled = bookmarked ? true : false;
 
   return (
     <>
@@ -152,9 +161,15 @@ export default function MovieDetail() {
                 <CiPlay1 className="text-[20px]" />
                 <p>Watch Trailer</p>
               </button>
-              <button className="w-[200px] border-none bg-primary text-white rounded-full font-bold h-[40px] flex items-center justify-center gap-[20px] ">
+              <button
+                disabled={bookmarkdisabled}
+                onClick={() => movie && !loading && addMovieToBookmark(movie)}
+                className={`w-[200px] border-none ${
+                  bookmarkdisabled ? "bg-primary opacity-50" : "bg-primary"
+                } text-white rounded-full font-bold h-[40px] flex items-center justify-center gap-[20px] `}
+              >
                 <CiBookmark className="text-[20px]" />
-                <p>Bookmark</p>
+                <p>{bookmarkdisabled ? "Bookmarked" : "Bookmark"}</p>
               </button>
             </div>
 
