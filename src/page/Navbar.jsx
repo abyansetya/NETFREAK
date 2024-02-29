@@ -28,7 +28,7 @@ export default function Navbar() {
       <div className="flex">
         <Link to="/">
           <h1 className="font-racing text-[20px]">
-            <span className="text-[#E50914]">NET</span>FREAK
+            <span className="text-[#E50914] text-[19px]">NET</span>FREAK
           </h1>
         </Link>
         <div className="navlist">

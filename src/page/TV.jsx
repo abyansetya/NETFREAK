@@ -5,6 +5,10 @@ import Pagination from "../components/Pagination";
 import { useNavigate } from "react-router-dom";
 
 const Movies = () => {
+  useEffect(() => {
+    document.title = "NETFREAK - TV Page";
+  }, []);
+
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
   const [name, setName] = useState("Trending");

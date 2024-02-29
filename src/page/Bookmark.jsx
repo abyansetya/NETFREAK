@@ -1,8 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import { FaRegTrashCan } from "react-icons/fa6";
 
 export default function Bookmark() {
+  useEffect(() => {
+    document.title = "NETFREAK - Bookmark Page";
+  }, []);
+
   const { bookmark } = useContext(GlobalContext);
   const { removeMovieFromBookmark } = useContext(GlobalContext);
 
@@ -25,12 +29,12 @@ export default function Bookmark() {
                         className="w-[200px] rounded"
                       />
                       <div className="transition-all duration-300 w-[200px] absolute inline -translate-y-[100%] rounded h-[300px] z-[10] opacity-0 hover:opacity-100">
-                        <div className="bg-black opacity-30 w-[200px] absolute inline rounded h-[300px]"></div>
+                        <div className="bg-black opacity-60 w-[200px] absolute inline rounded h-[300px]"></div>
                         <button
                           onClick={() => removeMovieFromBookmark(movie.id)}
                           className="absolute bottom-0 flex w-full items-center justify-center pb-[10px]"
                         >
-                          <FaRegTrashCan className="text-[30px] opacity-100" />
+                          <FaRegTrashCan className="text-[30px] opacity-100 hover:text-[#E50914]" />
                         </button>
                       </div>
                     </>
