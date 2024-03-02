@@ -84,14 +84,14 @@ const Movies = () => {
 
   return (
     <SkeletonTheme baseColor="#313131" highlightColor="#525252">
-      <div className="text-white p-16">
-        <div className="flex gap-[20px] ">
+      <div className="text-white sm:p-16 px-6 p-16">
+        <div className="flex sm:gap-[20px] gap-[10px]">
           <button
             onClick={() => {
               setName("Trending");
               setPage(1);
             }}
-            className={` transition duration-300 border-2 border-none py-[10px] px-[25px] active:bg-primary flex items-center justify-center text-[14px] ${
+            className={` transition duration-300 border-2 border-none sm:py-[10px] sm:px-[25px] sm:h-[50px] h-[40px] px-[5px] active:bg-primary flex items-center justify-center text-[10px] sm:text-[14px] ${
               name === "Trending"
                 ? "bg-primary"
                 : "bg-[#191919] hover:bg-[#5a5959]"
@@ -104,7 +104,7 @@ const Movies = () => {
               setName("nowplaying");
               setPage(1);
             }}
-            className={` transition duration-300 border-2 border-none py-[10px] px-[25px] flex items-center justify-center text-[14px] ${
+            className={` transition duration-300 border-2 border-none sm:py-[10px] sm:px-[25px] sm:h-[50px] h-[40px] px-[5px] active:bg-primary flex items-center justify-center text-[10px] sm:text-[14px] ${
               name === "nowplaying"
                 ? "bg-primary"
                 : "bg-[#191919] hover:bg-[#5a5959]"
@@ -117,7 +117,7 @@ const Movies = () => {
               setName("topliked");
               setPage(1);
             }}
-            className={`  transition duration-300 border-2 border-none py-[10px] px-[25px] flex items-center justify-center text-[14px] ${
+            className={` transition duration-300 border-2 border-none sm:py-[10px] sm:px-[25px] sm:h-[50px] h-[40px] px-[5px] active:bg-primary flex items-center justify-center text-[10px] sm:text-[14px] ${
               name === "topliked"
                 ? "bg-primary"
                 : "bg-[#191919] hover:bg-[#5a5959]"
@@ -130,7 +130,7 @@ const Movies = () => {
               setName("upcoming");
               setPage(1);
             }}
-            className={` transition duration-300 border-2 border-none py-[10px] px-[25px] flex items-center justify-center text-[14px] ${
+            className={` transition duration-300 border-2 border-none sm:py-[10px] sm:px-[25px] sm:h-[50px] h-[40px] px-[5px] active:bg-primary flex items-center justify-center text-[10px] sm:text-[14px] ${
               name === "upcoming"
                 ? "bg-primary"
                 : "bg-[#191919] hover:bg-[#5a5959]"
@@ -139,7 +139,7 @@ const Movies = () => {
             Upcoming
           </button>
         </div>
-        <div className="flex flex-wrap gap-[20px] justify-center pt-[50px]">
+        <div className="flex flex-wrap gap-[20px] justify-center sm:pt-[50px] pt-[30px]">
           {movies.map((movie) => (
             <div key={movie.id} onClick={() => moviedetail(movie.id)}>
               <img
@@ -147,7 +147,7 @@ const Movies = () => {
                 alt=""
                 className={`hover:cursor-pointer ${
                   loading ? "hidden" : null
-                } w-[200px] rounded`}
+                } sm:w-[200px] w-[100px] rounded`}
               />
               {loading ? ( // Show skeleton when loading or image is not loaded
                 <Skeleton

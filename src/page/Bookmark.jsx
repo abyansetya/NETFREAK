@@ -11,7 +11,7 @@ export default function Bookmark() {
   const { removeMovieFromBookmark } = useContext(GlobalContext);
 
   return (
-    <div className="p-16 text-white ">
+    <div className="text-white sm:p-16 px-6 p-16">
       <h1 className="m-4 text-[20px] font-bold">My Bookmark</h1>
       <div>
         {bookmark.length > 0 ? (
@@ -26,9 +26,9 @@ export default function Bookmark() {
                           movie.poster_path
                         }`}
                         alt={`${movie.title}`}
-                        className="w-[200px] rounded"
+                        className="sm:w-[200px] w-[100px] rounded"
                       />
-                      <div className="transition-all duration-300 w-[200px] absolute inline -translate-y-[100%] rounded h-[300px] z-[10] opacity-0 hover:opacity-100">
+                      <div className="transition-all duration-300 sm:w-[200px] w-[100px] absolute inline -translate-y-[100%] rounded sm:h-[300px] h-[150px] z-[10] opacity-0 hover:opacity-100">
                         <div className="bg-black opacity-60 w-[200px] absolute inline rounded h-[300px]"></div>
                         <button
                           onClick={() => removeMovieFromBookmark(movie.id)}

@@ -67,7 +67,7 @@ export default function Card({ movie, img, poster, name }) {
         breakpoint: 600,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
+          swipeToSlide: true,
         },
       },
     ],
@@ -104,7 +104,7 @@ export default function Card({ movie, img, poster, name }) {
                           <img
                             src={`${img}/${movieItem[posterType + "_path"]}`}
                             alt={movieItem.title}
-                            className="Movie-image sm:w-[150px] w-[120px] rounded-xl"
+                            className="Movie-image sm:w-[150px] w-[112px] rounded-xl"
                             // Update loading state when any image is loaded
                           />
                         </React.Fragment>

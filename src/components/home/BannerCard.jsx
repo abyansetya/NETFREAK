@@ -42,6 +42,15 @@ export default function BannerCard({ movie, img }) {
     slidesToScroll: 2,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 3,
+          swipeToSlide: true,
+        },
+      },
+    ],
   };
 
   const [loading, setLoading] = useState(true);

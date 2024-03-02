@@ -28,7 +28,7 @@ export default function ToTopbtn() {
       {scroll > 100 && (
         <button
           onClick={backToTop}
-          className={`w-[30px] h-[30px] border-none bg-primary rounded-full flex items-center justify-center fixed bottom-0 right-0 mr-[50px] mb-[50px] z-[10000]`}
+          className={`w-[30px] h-[30px] border-none bg-primary rounded-full flex items-center justify-center fixed bottom-0 right-0 mr-[50px] mb-[50px] z-[99]`}
         >
           <IoIosArrowUp />
         </button>

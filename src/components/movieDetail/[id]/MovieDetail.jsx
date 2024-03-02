@@ -74,21 +74,23 @@ export default function MovieDetail() {
   return (
     <>
       <SkeletonTheme baseColor="#313131" highlightColor="#525252">
-        <div className={`text-white p-16 flex gap-[50px] `}>
-          <div className=" ">
+        <div
+          className={`text-white sm:p-16 pt-16 px-6 w-full flex md:flex-row flex-col  gap-[50px] `}
+        >
+          <div className="flex justify-center">
             {loading ? (
               <Skeleton width={300} height={400} />
             ) : (
               <img
                 src={`${img}/${movie.poster_path}`}
                 alt=""
-                className="w-[300px] rounded-xl"
+                className="w-full sm:w-[50%] md:w-[300px] rounded-xl "
               />
             )}
           </div>
           <div>
-            <div className="flex items-center gap-[10px]">
-              <h1 className="text-white font-bold text-[28px]">
+            <div className="flex sm:flex-row flex-col sm:items-center items-start gap-[10px]">
+              <h1 className="text-white font-bold sm:text-[28px] text-[20px]">
                 {loading ? (
                   <Skeleton width={200} />
                 ) : name === "movie" ? (
@@ -99,12 +101,14 @@ export default function MovieDetail() {
               </h1>
               {loading ? null : movie.release_date &&
                 movie.release_date.length > 4 ? (
-                <p>{movie.release_date.substring(0, 4)}</p>
+                <p className="-mt-2 sm:mt-0">
+                  {movie.release_date.substring(0, 4)}
+                </p>
               ) : movie.first_air_date && movie.first_air_date.length > 4 ? (
                 <p>{movie.first_air_date.substring(0, 4)}</p>
               ) : null}
             </div>
-            <div className="flex gap-[5px] text-[12px] -mt-1">
+            <div className="flex sm:gap-[5px] gap-1 sm:text-[12px] text-[10px] sm:-mt-1 mt-1">
               {loading
                 ? null
                 : movie.genres &&
@@ -132,7 +136,7 @@ export default function MovieDetail() {
             </div>
             <div>
               <p className=" mt-[20px] font-bold text-[#949494] ">Overview:</p>
-              <p className="max-w-[800px] text-[14px]">
+              <p className="max-w-[800px] sm:text-[14px] text-[12px]">
                 {loading ? <Skeleton count={3} /> : movie.overview}{" "}
               </p>
             </div>
@@ -144,7 +148,9 @@ export default function MovieDetail() {
                 {actress != null ? (
                   actress.slice(0, 5).map((actress, i) => (
                     <React.Fragment key={i}>
-                      <p>{actress.name}</p>
+                      <p className="text-[12px] sm:text-[16px]">
+                        {actress.name}
+                      </p>
                       {i !== 4 && <span className="mr-2">, </span>}
                     </React.Fragment>
                   ))
@@ -153,23 +159,25 @@ export default function MovieDetail() {
                 )}
               </div>
             </div>
-            <div className="mt-[20px] flex items-center gap-[30px]">
+            <div className="mt-[20px] flex items-center gap-[30px] pb-6">
               <button
                 onClick={fetchSelectedMovie}
-                className="w-[200px] border-none bg-primary text-white rounded-full font-bold h-[40px] flex items-center justify-center gap-[20px] "
+                className="w-[200px] border-none bg-primary text-white rounded-full font-bold h-[40px] flex items-center justify-center gap-[10px] sm:gap-[20px] "
               >
                 <CiPlay1 className="text-[20px]" />
-                <p>Watch Trailer</p>
+                <p className="sm:text-[16px] text-[12px]">Watch Trailer</p>
               </button>
               <button
                 disabled={bookmarkdisabled}
                 onClick={() => movie && !loading && addMovieToBookmark(movie)}
                 className={`w-[200px] border-none ${
                   bookmarkdisabled ? "bg-primary opacity-50" : "bg-primary"
-                } text-white rounded-full font-bold h-[40px] flex items-center justify-center gap-[20px] `}
+                } text-white rounded-full font-bold h-[40px] flex items-center justify-center sm:gap-[20px] gap-[10px] `}
               >
-                <CiBookmark className="text-[20px]" />
-                <p>{bookmarkdisabled ? "Bookmarked" : "Bookmark"}</p>
+                <CiBookmark className="sm:text-[20px]" />
+                <p className="sm:text-[16px] text-[14px]">
+                  {bookmarkdisabled ? "Bookmarked" : "Bookmark"}
+                </p>
               </button>
             </div>
 

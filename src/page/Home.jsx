@@ -9,7 +9,9 @@ export default function Home() {
   }, []);
   return (
     <>
-      <Banner />
+      <div className="sm:pt-0 pt-[60px]">
+        <Banner />
+      </div>
       <Trending />
     </>
   );

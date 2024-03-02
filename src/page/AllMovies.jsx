@@ -86,7 +86,7 @@ export default function AllMovies() {
   return (
     <>
       <SkeletonTheme baseColor="#313131" highlightColor="#525252">
-        <div className="text-white p-16">
+        <div className="text-white sm:p-16 px-6 p-16">
           <h1 className="m-4 text-[20px] font-bold">ALL Movies</h1>
           <div className="flex flex-wrap gap-[20px] justify-center">
             {movies.map((movie, i) => (
@@ -98,7 +98,9 @@ export default function AllMovies() {
                 <img
                   src={`${img}/${movie.poster_path}`}
                   alt=""
-                  className={`w-[200px] rounded ${loading ? "hidden" : null}`}
+                  className={` sm:w-[200px] w-[100px] rounded ${
+                    loading ? "hidden" : null
+                  }`}
                   onLoad={() => handleImageLoad(i)}
                 />
                 {loading ? ( // Show skeleton when loading or image is not loaded
