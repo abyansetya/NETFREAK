@@ -60,7 +60,7 @@ export default function InputSearch() {
   const name = "movie";
 
   return (
-    <div className="text-black md:inline-block hidden">
+    <div className="text-black md:inline-block mr-[20px] hidden">
       <form onSubmit={submitMovies} className="">
         <div
           onClick={() => setCross(true)}

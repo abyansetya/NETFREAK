@@ -55,7 +55,7 @@ export default function Navbar() {
           </div>
           <InputSearch />
           <div>
-            <button className="border-2 rounded  border-white w-[95px] right-20 absolute bg-white text-black text-[15px]">
+            <button className="border-2 rounded ml-[20px] border-white w-[95px] right-20 absolute bg-white text-black text-[15px]">
               Sign in
             </button>
             <button

@@ -182,14 +182,17 @@ export default function MovieDetail() {
             </div>
 
             {modal && (
-              <div className="absolute top-[50px] left-[100px] right-[100px] bottom-0 h-[700px] s bg-black z-[200] transition duration-1000 flex justify-center items-center ">
+              <div className="absolute top-[80%] sm:top-[50px] sm:left-[100px] sm:right-[100px] left-0 right-0 bottom-0 md:h-[700px] sm:h-[400px] h-[300px] bg-black z-[200] transition duration-1000 flex justify-center items-center ">
                 <button onClick={() => setModal(false)}>
                   <GrClose className="absolute top-0 right-0 mx-6 mt-4" />
                 </button>
                 {movieId ? (
                   <YouTube
                     videoId={movieId}
-                    opts={{ width: "848", height: "477" }}
+                    opts={{
+                      width: "w-full sm:w-480 md:w-720",
+                      height: "h-auto sm:h-270 md:h-480",
+                    }}
                   />
                 ) : (
                   <h1>VIDEO NOT FOUND</h1>
